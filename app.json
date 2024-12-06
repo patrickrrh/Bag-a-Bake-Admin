@@ -36,6 +36,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "baseURL": "http://10.125.50.78:3000/api",
+      "router": {
+        "origin": false
+      }
     }
   }
 }
