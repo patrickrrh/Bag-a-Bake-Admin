@@ -24,6 +24,7 @@ const ActionBakery = () => {
     const parsedBakeryData = bakeryData && typeof bakeryData === 'string' ? JSON.parse(bakeryData) : {}
 
     const [isPreviewQRIS, setIsPreviewQRIS] = useState(false)
+    const [isPreviewHalalCertificate, setIsPreviewHalalCertificate] = useState(false)
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [isDeactivateModal, setIsDeactivateModal] = useState(false)
     const [isRejectModal, setIsRejectModal] = useState(false)
@@ -122,6 +123,33 @@ const ActionBakery = () => {
                         <TextInformation title='Alamat' value={parsedBakeryData.bakeryAddress} />
                         <TextInformation title='Jam Operasional' value={`${parsedBakeryData.openingTime} - ${parsedBakeryData.closingTime}`} />
                         <TextInformation title='Deskripsi' value={parsedBakeryData.bakeryDescription} />
+                        <TextInformation title='Status Halal' value={parsedBakeryData.isHalal === 1 ? 'Ya' : 'Tidak'} />
+                        {
+                            parsedBakeryData.isHalal === 1 && (
+                                <View className='flex-row mt-2'>
+                                <View className='mr-1'>
+                                    <TextTitle5Bold label={`Sertifikat Halal:`} />
+                                </View>
+                                <View className='flex-row items-end'>
+                                    <TouchableOpacity onPress={() => setIsPreviewHalalCertificate(true)}>
+                                        <Image
+                                            source={{ uri: `${process.env.EXPO_PUBLIC_LOCAL_SERVER}/images/bakery-halal-certificate/${parsedBakeryData.halalCertificate}` }}
+                                            className='ml-2 mt-1 w-28 h-28'
+                                        />
+                                    </TouchableOpacity>
+                                    <TouchableOpacity onPress={() => handleDownloadImage('images/bakery-halal-certificate', parsedBakeryData.halalCertificate)} className='ml-1'>
+                                        <Ionicons name="download-outline" size={18} color="gray" />
+                                    </TouchableOpacity>
+                                </View>
+                                <ImageView
+                                    images={[{ uri: `${process.env.EXPO_PUBLIC_LOCAL_SERVER}/images/bakery-halal-certificate/${parsedBakeryData.halalCertificate}` }]}
+                                    imageIndex={0}
+                                    visible={isPreviewHalalCertificate}
+                                    onRequestClose={() => setIsPreviewHalalCertificate(false)}
+                                />
+                            </View>
+                            )
+                        }
                     </View>
 
                     <View style={{ height: 1, backgroundColor: "#e0e0e0", marginVertical: 8 }} />
@@ -142,16 +170,16 @@ const ActionBakery = () => {
                                                     <View className='flex-row items-end'>
                                                         <TouchableOpacity onPress={() => setIsPreviewQRIS(true)}>
                                                             <Image
-                                                                source={{ uri: payment.paymentDetail }}
+                                                                source={{ uri: `${process.env.EXPO_PUBLIC_LOCAL_SERVER}/images/bakery-qris/${payment.paymentDetail}` }}
                                                                 className='ml-2 mt-1 w-28 h-28'
                                                             />
                                                         </TouchableOpacity>
-                                                        <TouchableOpacity onPress={() => handleDownloadImage(payment.paymentDetail)} className='ml-1'>
+                                                        <TouchableOpacity onPress={() => handleDownloadImage('images/bakery-qris', payment.paymentDetail)} className='ml-1'>
                                                             <Ionicons name="download-outline" size={18} color="gray" />
                                                         </TouchableOpacity>
                                                     </View>
                                                     <ImageView
-                                                        images={[{ uri: payment.paymentDetail }]}
+                                                        images={[{ uri: `${process.env.EXPO_PUBLIC_LOCAL_SERVER}/images/bakery-qris/${payment.paymentDetail}` }]}
                                                         imageIndex={0}
                                                         visible={isPreviewQRIS}
                                                         onRequestClose={() => setIsPreviewQRIS(false)}
