@@ -116,7 +116,7 @@ export default function Index() {
 
       <View className="flex-1">
         <View className="flex-row justify-between mb-2">
-          <TextTitle3 label="Daftar Bakeri" />
+          <TextTitle3 label="Daftar Bakery" />
           <TextLink label="Lihat Semua" onPress={() => router.push({
             pathname: '/listBakery',
             params: { listStatus: 2 }

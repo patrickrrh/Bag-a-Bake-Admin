@@ -117,9 +117,9 @@ const ActionBakery = () => {
                     <View style={{ height: 1, backgroundColor: "#e0e0e0", marginVertical: 8 }} />
 
                     <View>
-                        <TextTitle3 label='Data Bakeri' />
-                        <TextInformation title='Nama Bakeri' value={parsedBakeryData.bakeryName} />
-                        <TextInformation title='Nomor Telepon Bakeri' value={parsedBakeryData.bakeryPhoneNumber} />
+                        <TextTitle3 label='Data Bakery' />
+                        <TextInformation title='Nama Bakery' value={parsedBakeryData.bakeryName} />
+                        <TextInformation title='Nomor Telepon Bakery' value={parsedBakeryData.bakeryPhoneNumber} />
                         <TextInformation title='Alamat' value={parsedBakeryData.bakeryAddress} />
                         <TextInformation title='Jam Operasional' value={`${parsedBakeryData.openingTime} - ${parsedBakeryData.closingTime}`} />
                         <TextInformation title='Deskripsi' value={parsedBakeryData.bakeryDescription} />
@@ -204,7 +204,7 @@ const ActionBakery = () => {
                             <CustomButton
                                 label='Setujui'
                                 handlePress={() => handleUpdateBakeryStatusApi(1,
-                                    'Akun Bakeri Anda Telah Diaktifkan', 'Silahkan mengakses aplikasi menggunakan email dan kata sandi Anda.')}
+                                    'Akun Bakery Anda Telah Diaktifkan', 'Silahkan mengakses aplikasi menggunakan email dan kata sandi Anda.')}
                                 isLoading={isSubmitting}
                             />
                             <ContactButton
@@ -228,7 +228,7 @@ const ActionBakery = () => {
                             <CustomButton
                                 label='Aktifkan'
                                 handlePress={() => handleUpdateBakeryStatusApi(1,
-                                    'Akun Bakeri Anda Telah Diaktifkan', 'Silahkan mengakses aplikasi menggunakan email dan kata sandi Anda.')}
+                                    'Akun Bakery Anda Telah Diaktifkan', 'Silahkan mengakses aplikasi menggunakan email dan kata sandi Anda.')}
                                 isLoading={isSubmitting}
                             />
                         </View>
@@ -239,7 +239,7 @@ const ActionBakery = () => {
             <ModalAction
                 modalVisible={isDeactivateModal}
                 setModalVisible={setIsDeactivateModal}
-                title='Apakah Anda Yakin Ingin Menonaktifkan Bakeri Ini?'
+                title='Apakah Anda Yakin Ingin Menonaktifkan Bakery Ini?'
                 reason={reason}
                 reasonError={reasonError}
                 onChangeText={(text) => {
@@ -249,13 +249,13 @@ const ActionBakery = () => {
                 primaryButtonLabel='Batal'
                 secondaryButtonLabel='Nonaktifkan'
                 onPrimaryAction={() => setIsDeactivateModal(false)}
-                onSecondaryAction={() => handleUpdateBakeryStatusApi(2, 'Maaf, Akun Bakeri Anda Telah Dinonaktifkan', reason)}
+                onSecondaryAction={() => handleUpdateBakeryStatusApi(2, 'Maaf, Akun Bakery Anda Telah Dinonaktifkan', reason)}
             />
 
             <ModalAction
                 modalVisible={isRejectModal}
                 setModalVisible={setIsRejectModal}
-                title='Apakah Anda Yakin Ingin Menolak Registrasi Bakeri Ini?'
+                title='Apakah Anda Yakin Ingin Menolak Registrasi Bakery Ini?'
                 reason={reason}
                 reasonError={reasonError}
                 onChangeText={(text) => {
@@ -265,7 +265,7 @@ const ActionBakery = () => {
                 primaryButtonLabel='Batal'
                 secondaryButtonLabel='Tolak'
                 onPrimaryAction={() => setIsRejectModal(false)}
-                onSecondaryAction={() => handleDeleteBakeryApi('Maaf, Registrasi Bakeri Ditolak', reason)}
+                onSecondaryAction={() => handleDeleteBakeryApi('Maaf, Registrasi Bakery Ditolak', reason)}
             />
 
         </SafeAreaView>

@@ -58,7 +58,7 @@ const ListBakery = () => {
                     </View>
 
                     <View style={{ flex: 1, alignItems: 'center' }}>
-                        <TextTitle3 label="Daftar Bakeri" />
+                        <TextTitle3 label="Daftar Bakery" />
                     </View>
 
                     <View style={{ position: 'absolute', right: 0 }}>
